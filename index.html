@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="C:\Users\Windows 11\Pictures\myke, karl, dave.png" type="image/png">
+  <title>Our Group Webpage</title>
+
+  <!-- Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* === Basic Page Setup === */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      overflow-x: hidden;
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    /* === Light Mode Styles === */
+    body.light-mode {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      color: #0f172a;
+    }
+
+    body.light-mode h1 {
+      color: #0284c7;
+      text-shadow: none;
+    }
+
+    body.light-mode h2 {
+      color: #0ea5e9;
+      text-shadow: none;
+    }
+
+    body.light-mode p {
+      color: #1e293b;
+    }
+
+    body.light-mode li {
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.1);
+      color: #0f172a;
+    }
+
+    body.light-mode li:hover {
+      background: rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .links a {
+      color: #0369a1;
+    }
+
+    body.light-mode .links a:hover {
+      color: #0284c7;
+    }
+
+    body.light-mode .main-link {
+      background-color: #0284c7;
+      color: white;
+    }
+
+    body.light-mode .main-link:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* === Toggle Button (Animated) === */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 1.3em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .mode-toggle:hover {
+      background: #5eead4;
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    body.light-mode .mode-toggle {
+      background: #0ea5e9;
+      color: #ffffff;
+    }
+
+    /* === Headings and Paragraphs === */
+    h1 {
+      color: #38bdf8;
+      margin-top: 70px;
+      font-size: 2.4em;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+      animation: fadeInDown 1.5s ease;
+    }
+
+    p {
+      color: #cbd5e1;
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: 15px auto;
+      animation: fadeIn 2s ease;
+      padding: 0 10px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #5eead4;
+      font-size: 1.6em;
+      text-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
+      animation: fadeInUp 1.5s ease;
+    }
+
+    /* === Team Members List === */
+    ul {
+      list-style-type: disc;
+      text-align: left;
+      display: inline-block;
+      margin: 25px auto;
+      padding-left: 30px;
+      animation: fadeInUp 2.3s ease;
+    }
+
+    li {
+      margin: 12px 0;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    li:hover {
+      transform: translateX(8px);
+      background: rgba(94,234,212,0.15);
+      box-shadow: 0 0 10px rgba(94,234,212,0.2);
+    }
+
+    /* === Hidden Social Links (Smooth Transition) === */
+    .links {
+      display: block;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.6s ease;
+      margin-left: 45px;
+      margin-top: 5px;
+    }
+
+    .links.active {
+      opacity: 1;
+    }
+
+    .links a {
+      color: #5eead4;
+      background: none;
+      padding: 0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      margin: 0 10px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .links a i {
+      margin-right: 5px;
+    }
+
+    .links a:hover {
+      color: #38bdf8;
+      text-shadow: 0 0 8px #38bdf8;
+    }
+
+    /* === Group Picture === */
+    img {
+      width: 320px;
+      height: auto;
+      margin: 40px auto 25px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: float 4s ease-in-out infinite;
+      display: block;
+    }
+
+    /* === Favorite Link === */
+    a.main-link {
+      display: inline-block;
+      text-decoration: none;
+      color: #0f172a;
+      background-color: #38bdf8;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 2.6s ease;
+      margin-bottom: 40px;
+    }
+
+    a.main-link:hover {
+      background-color: #5eead4;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(94,234,212,0.4);
+    }
+
+    /* === Animations === */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.9em;
+        margin-top: 60px;
+      }
+
+      ul {
+        width: 85%;
+      }
+
+      img {
+        width: 85%;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="mode-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+
+  <h1>Welcome to Our Group Webpage</h1>
+
+  <p>
+    Hello! I am <strong>Myke Eleazhar Bautista</strong>, the leader of this group. As the group leader, I aim to guide our team with collaboration and creativity. Together, we strive to learn new skills, share ideas, and support one another to successfully complete our projects with excellence. 
+    Below are the members of our team.
+  </p>
+
+  <h2>Our Team Members</h2>
+
+  <ul>
+    <li onclick="toggleLinks('myke')">Bautista, Myke Eleazhar H.</li>
+    <div id="myke" class="links">
+      <a href="https://www.facebook.com/kissmoko.mwa" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="https://www.instagram.com/fckumic/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.tiktok.com/@ekym11" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+    </div>
+
+    <li onclick="toggleLinks('karl')">Besa, Karl Ashley S.</li>
+    <div id="karl" class="links">
+      <a href="https://www.facebook.com/krxley" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="https://www.instagram.com/krxley/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.tiktok.com/@username216000" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+    </div>
+
+    <li onclick="toggleLinks('dave')">Buccat, Dave Mathew T.</li>
+    <div id="dave" class="links">
+      <a href="https://www.facebook.com/davemathew.buccat" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="https://www.instagram.com/dvemthew_/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.tiktok.com/@dxve_bucct" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+    </div>
+  </ul>
+
+  <img src="C:\Users\Windows 11\Pictures\myke, karl, dave.png" 
+       alt="Group picture of Myke, Karl, and Dave">
+
+  <a href="https://moviebox.ph/" target="_blank" class="main-link">Visit Our Favorite Website</a>
+
+  <script>
+    // === Toggle Links Visibility ===
+    function toggleLinks(id) {
+      const links = document.getElementById(id);
+      const allLinks = document.querySelectorAll('.links');
+
+      allLinks.forEach(div => {
+        if (div !== links) {
+          div.style.maxHeight = null;
+          div.style.opacity = 0;
+          div.classList.remove('active');
+        }
+      });
+
+      if (links.classList.contains('active')) {
+        links.style.maxHeight = null;
+        links.style.opacity = 0;
+        links.classList.remove('active');
+      } else {
+        links.style.maxHeight = links.scrollHeight + "px";
+        links.style.opacity = 1;
+        links.classList.add('active');
+      }
+    }
+
+    // === Dark / Light Mode ===
+    const toggleBtn = document.getElementById('themeToggle');
+    const icon = toggleBtn.querySelector('i');
+
+    function updateIcon() {
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      updateIcon();
+      const mode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+      localStorage.setItem('theme', mode);
+    });
+
+    // === Remember User Choice ===
+    window.onload = function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+      }
+      updateIcon();
+    };
+  </script>
+</body>
+</html>
